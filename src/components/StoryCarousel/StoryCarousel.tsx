@@ -6,7 +6,9 @@ interface StoryCarouselProps {
   duration?: number;
 }
 
-const StoryCarousel: React.FC<StoryCarouselProps> = ({ duration = 5000 }) => {
+export const StoryCarousel: React.FC<StoryCarouselProps> = ({
+  duration = 5000,
+}) => {
   return (
     <StoryProvider duration={duration}>
       <ThumbnailSwiper />
@@ -14,5 +16,3 @@ const StoryCarousel: React.FC<StoryCarouselProps> = ({ duration = 5000 }) => {
     </StoryProvider>
   );
 };
-
-export default StoryCarousel;
