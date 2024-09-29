@@ -29,9 +29,6 @@
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },
-  "engines": {
-    "node": ">=18.0.0"
-  },
   "scripts": {
     "dev": "vite",
     "build": "npm run clean && tsc && npm run copyfiles",
