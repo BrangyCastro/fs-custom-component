@@ -35,7 +35,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "clean": "rimraf dist/",
-    "copyfiles": "copyfiles -u 1 src/**/*.css dist/",
+    "copyfiles": "copyfiles -u 1 src/**/*.css dist/ && copyfiles -u 1 src/components/StoryCarousel/components/assets/**/*.svg dist/",
     "push:npm": "np",
     "test": "echo 'all tests were good'"
   },
