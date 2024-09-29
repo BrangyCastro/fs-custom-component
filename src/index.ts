@@ -1,2 +1,2 @@
-export { MyLabel } from "./components/Label";
-export { StoryCarousel } from "./components/StoryCarousel";
+export { MyLabel } from "./components/Label/Label";
+export { StoryCarousel } from "./components/StoryCarousel/StoryCarousel";
