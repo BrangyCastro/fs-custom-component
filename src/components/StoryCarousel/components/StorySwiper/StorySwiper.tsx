@@ -9,7 +9,7 @@ import ArrowLeft from "../assets/arrow_left.svg";
 import ArrowRight from "../assets/arrow_right.svg";
 import Closed from "../assets/close.svg";
 
-import "./StorySwiper.css";
+import styles from "./StorySwiper.module.scss";
 
 export const StorySwiper: React.FC = () => {
   const { activeIndex, setActiveIndex, stories, setOpenModal } =
@@ -44,9 +44,9 @@ export const StorySwiper: React.FC = () => {
   }, [activeIndex]);
 
   return (
-    <div className="stories-navigator-container">
+    <div className={styles["stories-navigator-container"]}>
       <div
-        className="nav-button"
+        className={styles["nav-button"]}
         onClick={() => handleNavigation("prev")}
         style={{ visibility: activeIndex > 0 ? "visible" : "hidden" }}
         aria-label="Previous story"
@@ -61,7 +61,7 @@ export const StorySwiper: React.FC = () => {
         initialSlide={activeIndex}
         onTouchStart={() => setIsPaused(true)}
         onTouchEnd={() => setIsPaused(false)}
-        className="swiper-container story-groups-slider"
+        className={`${styles["swiper-container"]} ${styles["story-groups-slider"]}`}
       >
         {stories.map((story, index) => (
           <SwiperSlide key={index}>
@@ -71,16 +71,16 @@ export const StorySwiper: React.FC = () => {
               onComplete={handleProgressComplete}
             />
             <div
-              className="story-background-container"
+              className={styles["story-background-container"]}
               style={{
                 backgroundSize: "cover",
                 backgroundPosition: "center center",
                 backgroundImage: `linear-gradient(rgb(16, 20, 25) 0%, rgba(16, 20, 25, 0) 40%), url("${story.image}")`,
               }}
             >
-              <div className="navigation-overlay">
+              <div className={styles["navigation-overlay"]}>
                 <div
-                  className="navigation-overlay-area left"
+                  className={`${styles["navigation-overlay-area"]} ${styles["left"]}`}
                   onClick={() => handleNavigation("prev")}
                   style={{
                     visibility: activeIndex > 0 ? "visible" : "hidden",
@@ -88,7 +88,7 @@ export const StorySwiper: React.FC = () => {
                   aria-label="Previous story"
                 ></div>
                 <div
-                  className="navigation-overlay-area right"
+                  className={`${styles["navigation-overlay-area"]} ${styles["right"]}`}
                   onClick={() => handleNavigation("next")}
                   style={{
                     visibility:
@@ -97,15 +97,15 @@ export const StorySwiper: React.FC = () => {
                   aria-label="Next story"
                 ></div>
               </div>
-              <div className="story-top-bar">
-                <div className="info">
-                  <div className="heading">
-                    <span className="title">
+              <div className={styles["story-top-bar"]}>
+                <div className={styles["info"]}>
+                  <div className={styles["heading"]}>
+                    <span className={styles["title"]}>
                       {story.title} {index + 1}
                     </span>
                   </div>
                 </div>
-                <div className="close" onClick={onCloseModal}>
+                <div className={styles["close"]} onClick={onCloseModal}>
                   <img src={Closed} alt="Closed" />
                 </div>
               </div>
@@ -114,7 +114,7 @@ export const StorySwiper: React.FC = () => {
         ))}
       </Swiper>
       <div
-        className="nav-button"
+        className={styles["nav-button"]}
         onClick={() => handleNavigation("next")}
         style={{
           visibility: activeIndex < stories.length - 1 ? "visible" : "hidden",

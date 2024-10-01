@@ -1,0 +1,123 @@
+.stories-navigator-container {
+  align-items: center;
+  bottom: 155px;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 16px;
+
+  .nav-button {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    padding: 8px 16px;
+    z-index: 10000;
+  }
+  .swiper-container {
+    margin-right: unset;
+    margin-left: unset;
+  }
+  .story-groups-slider {
+    background: transparent;
+    border-radius: 10px;
+    height: 100%;
+    left: 0;
+    max-width: 59.83vh;
+    position: relative;
+    top: 0;
+    width: 100%;
+    z-index: 10000;
+
+    .story-background-container {
+      background-position: 50%;
+      background-repeat: no-repeat;
+      background: #1c2026;
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: flex-start;
+      padding: 32px 16px 40px;
+      width: 100%;
+      .navigation-overlay {
+        .navigation-overlay-area {
+          height: 100%;
+          position: absolute;
+          top: 75px;
+          width: 30%;
+          z-index: 3000;
+          &.left {
+            left: 0;
+          }
+          &.right {
+            right: 0;
+          }
+        }
+      }
+      .story-top-bar {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+        z-index: 1;
+        .info {
+          align-items: center;
+          display: flex;
+          flex-direction: row;
+          flex: 1;
+          justify-content: center;
+          min-width: 0;
+          .heading {
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            margin-right: 8px;
+            min-width: 0;
+            .title {
+              font-size: 1.14286rem;
+              font-weight: 700;
+              line-height: 20px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+          }
+        }
+        .close {
+          display: none;
+          flex-direction: row;
+          margin-left: auto;
+          padding: 4px;
+          img {
+            height: 30px;
+            width: 30px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .stories-navigator-container {
+    border-radius: 0px;
+    bottom: 0px;
+    top: 0px;
+    .story-groups-slider {
+      border-radius: 0px;
+    }
+    .nav-button {
+      display: none;
+    }
+    .story-background-container {
+      border-radius: 0px;
+      .story-top-bar .close {
+        display: flex;
+      }
+    }
+  }
+}

@@ -5,7 +5,7 @@ import Closed from "../assets/close.svg";
 import { StorySwiper } from "../StorySwiper";
 import { ThumbnailSwiper } from "../ThumbnailSwiper";
 
-import "./StoryView.css";
+import styles from "./StoryView.module.scss";
 
 export const StoryView = () => {
   const { openModal, setOpenModal, activeIndex } = useStoryContext();
@@ -41,14 +41,19 @@ export const StoryView = () => {
     <>
       {openModal && (
         <div
-          className={`stories-navigator-wrapper ${openModal ? "open" : ""}`}
+          className={`${styles["stories-navigator-wrapper"]} ${
+            openModal ? styles["open"] : ""
+          }`}
           ref={storyRef}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          <div className="stories-navigator-backdrop" onClick={onCloseModal}>
-            <div className="story-top-bar">
+          <div
+            className={styles["stories-navigator-backdrop"]}
+            onClick={onCloseModal}
+          >
+            <div className={styles["story-top-bar"]}>
               <div onClick={onCloseModal}>
                 <img src={Closed} alt="Closed" />
               </div>

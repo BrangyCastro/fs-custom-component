@@ -1,0 +1,6 @@
+body.stories-lock-fixed-height {
+  overflow: hidden;
+}
+.swiper-wrapper {
+  align-items: center;
+}

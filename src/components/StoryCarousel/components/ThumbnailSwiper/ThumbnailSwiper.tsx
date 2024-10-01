@@ -7,7 +7,7 @@ import { useStoryContext } from "../StoryContext";
 import ArrowLeft from "../assets/arrow_left.svg";
 import ArrowRight from "../assets/arrow_right.svg";
 
-import "./ThumbnailSwiper.css";
+import styles from "./ThumbnailSwiper.module.scss";
 
 interface ThumbnailSwiperProps {
   isPrincipal?: boolean;
@@ -38,10 +38,10 @@ export const ThumbnailSwiper: React.FC<ThumbnailSwiperProps> = ({
 
   const checkButtonsVisibility = () => {
     if (swiperRef.current) {
-      const isBeginning = swiperRef.current.isBeginning; // Verificar si está en la primera historia
-      const isEnd = swiperRef.current.isEnd; // Verificar si está en la última historia
-      setShowPrev(!isBeginning); // Mostrar "Atrás" si no estamos en el primer item
-      setShowNext(!isEnd); // Mostrar "Siguiente" si no estamos en el último item
+      const isBeginning = swiperRef.current.isBeginning;
+      const isEnd = swiperRef.current.isEnd;
+      setShowPrev(!isBeginning);
+      setShowNext(!isEnd);
     }
   };
 
@@ -49,8 +49,8 @@ export const ThumbnailSwiper: React.FC<ThumbnailSwiperProps> = ({
     if (swiperRef.current) {
       const currentIndex = swiperRef.current.activeIndex;
       if (currentIndex < stories.length - 1) {
-        swiperRef.current.slideNext(); // Desplazar a la siguiente miniatura
-        checkButtonsVisibility(); // Actualizar visibilidad de botones
+        swiperRef.current.slideNext();
+        checkButtonsVisibility();
       } else {
         alert("Has llegado al último item");
       }
@@ -61,8 +61,8 @@ export const ThumbnailSwiper: React.FC<ThumbnailSwiperProps> = ({
     if (swiperRef.current) {
       const currentIndex = swiperRef.current.activeIndex;
       if (currentIndex > 0) {
-        swiperRef.current.slidePrev(); // Desplazar a la miniatura anterior
-        checkButtonsVisibility(); // Actualizar visibilidad de botones
+        swiperRef.current.slidePrev();
+        checkButtonsVisibility();
       } else {
         alert("Estás en el primer item");
       }
@@ -78,7 +78,7 @@ export const ThumbnailSwiper: React.FC<ThumbnailSwiperProps> = ({
   const handleTouchEnd = () => {
     if (swiperRef.current) {
       swiperRef.current.on("slideChangeTransitionEnd", checkButtonsVisibility);
-      checkButtonsVisibility(); // Verificar visibilidad de botones al soltar el arrastre
+      checkButtonsVisibility();
     }
   };
 
@@ -97,18 +97,18 @@ export const ThumbnailSwiper: React.FC<ThumbnailSwiperProps> = ({
         onSwiper={(swiper) => (swiperRef.current = swiper)}
         slidesPerView="auto"
         spaceBetween={10}
-        className={`swiper-container story-groups-slider ${
-          !isPrincipal && "story-groups-thumbnails-slider"
+        className={`${styles["story-groups-slider"]} ${
+          !isPrincipal && styles["story-groups-thumbnails-slider"]
         }`}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
         initialSlide={initialSlide}
       >
         {stories.map((story, index) => (
-          <SwiperSlide key={index} className="thumbnail-slide">
+          <SwiperSlide key={index} className={styles["thumbnail-slide"]}>
             <div
-              className={`story-group-thumbnail-container ${
-                !isPrincipal && index === activeIndex ? "active" : ""
+              className={`${styles["story-group-thumbnail-container"]} ${
+                !isPrincipal && index === activeIndex ? styles["active"] : ""
               }`}
               onClick={() => {
                 setActiveIndex(index);
@@ -118,17 +118,19 @@ export const ThumbnailSwiper: React.FC<ThumbnailSwiperProps> = ({
                 }
               }}
             >
-              <div className="overlay"></div>
-              <div className="thumbnail-background">
-                {loadingImages[index] && <div className="skeleton-loader" />}
+              <div className={styles["overlay"]}></div>
+              <div className={styles["thumbnail-background"]}>
+                {loadingImages[index] && (
+                  <div className={styles["skeleton-loader"]} />
+                )}
                 <img
                   src={story.image}
                   alt={`Thumbnail ${index}`}
-                  className={`${loadingImages[index] ? "hidden" : ""}`}
+                  className={`${loadingImages[index] ? styles["hidden"] : ""}`}
                   onLoad={() => handleImageLoad(index)}
                 />
               </div>
-              <span className="story-title">
+              <span className={styles["story-title"]}>
                 {story.title} {index + 1}
               </span>
             </div>

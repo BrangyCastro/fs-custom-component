@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-import "./StoryProgressIndicator.css";
+import styles from "./StoryProgressIndicator.module.scss";
 import { useStoryContext } from "../StoryContext";
 
 interface StoryProgressIndicatorProps {
@@ -50,9 +50,14 @@ export const StoryProgressIndicator: React.FC<StoryProgressIndicatorProps> = ({
   }, [isActive, duration, onComplete, isPaused]);
 
   return (
-    <div className="progress-container navigation-area">
-      <div className="progress-bar">
-        <div className="bar" style={{ width: `${progress}%` }}></div>
+    <div className={styles["progress-container"]}>
+      <div className={styles["progress-bar"]}>
+        <div
+          className={styles["bar"]}
+          style={{
+            transform: `scaleX(${progress / 100})`,
+          }}
+        ></div>
       </div>
     </div>
   );
