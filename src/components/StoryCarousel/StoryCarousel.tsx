@@ -2,6 +2,7 @@ import { StoryProvider, StoryView, ThumbnailSwiper } from "./components";
 
 import "swiper/css";
 import "./StoryCarousel.css";
+import "./styles/main.css";
 
 interface StoryCarouselProps {
   duration?: number;
